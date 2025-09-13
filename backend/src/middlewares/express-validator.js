@@ -45,7 +45,7 @@ export const loginValidation = [
 
 
 
-export const bookValidator = [
+export const  bookValidator = [
   body("title")
     .notEmpty()
     .withMessage("Title is required")
@@ -71,10 +71,5 @@ export const bookValidator = [
     .withMessage("Rating is required")
     .isInt({ min: 1, max: 5 })
     .withMessage("Rating must be an integer between 1 and 5"),
-
-  body("user")
-    .notEmpty()
-    .withMessage("User is required")
-    .isMongoId()
-    .withMessage("User must be a valid Mongo ID"),
+    
 ];

@@ -30,34 +30,35 @@ export const signUp = async (req, res) => {
         message: "Email is already in use.",
       });
     }
+    const profilePic = `https://api.dicebear.com/9.x/personas/svg?seed=${email}`;
 
     const user = new User({
       username,
       email,
       password,
+      profileImage: profilePic,
     });
 
     await user.save();
 
     const token = await getToken(user._id);
-    const profilePic = `https://api.dicebear.com/9.x/personas/svg?seed=${user.email}`
 
-    console.log(profilePic)  
+    console.log(profilePic);
     res.status(201).json({
-      success: true,  
+      success: true,
       user: {
         _id: user._id,
         username: user.username,
-        email: user.email,       
-        profileImage:profilePic,
+        email: user.email,
+        profileImage: profilePic,
         createdAt: user.createdAt,
-        updatedAt: user.updatedAt,   
+        updatedAt: user.updatedAt,
       },
       message: "Signup successful!",
       token,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",
@@ -65,8 +66,8 @@ export const signUp = async (req, res) => {
   }
 };
 
-export const login = async (req, res)=>{
- const errors = validationResult(req);
+export const login = async (req, res) => {
+  const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     // If there are validation errors, return the first error message
@@ -78,8 +79,7 @@ export const login = async (req, res)=>{
   }
 
   try {
-   
-   const { email, password } = matchedData(req);
+    const { email, password } = matchedData(req);
 
     let user = await User.findOne({ email }).select("+password");
     if (!user) {
@@ -110,21 +110,11 @@ export const login = async (req, res)=>{
       token,
       message: "Login Successful",
     });
-    
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",
     });
   }
-}
-
-
-
-
-
-
-
-
-
+};
