@@ -6,7 +6,12 @@ const SafeScreen = ({ children }) => {
 
   return (
     <View
-      style={{ paddingTop: insets.top }}
+      style={{
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
       className="flex-1 bg-background"
     >
       {children}
