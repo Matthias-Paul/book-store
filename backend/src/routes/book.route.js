@@ -2,7 +2,7 @@ import express from "express"
 const router = express.Router()
 import { createBook, uploadImage, upload, getBooks, deleteBook, getUserBooks } from "../controllers/book.js"
 import { bookValidator } from "../middlewares/express-validator.js"
-import { verifyUser } from "../middlewares/verifyUSer.js"
+import { verifyUser } from "../middlewares/verifyUser.js"
 import { multerErrorHandler } from "../utils/multerErrorHandler.js"
 
 
