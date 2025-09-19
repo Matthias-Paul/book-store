@@ -10,11 +10,19 @@ import {
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { signInSuccess } from "../../redux/slice/authSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+
+    const { loginUser } = useSelector((state) => state.auth);
+
+    console.log(loginUser)
 
   const shadowStyle = {
     shadowColor: "#000",
@@ -24,7 +32,12 @@ const Login = () => {
     elevation: 5,
   };
 
-  const handleLogin = () => {};
+  const handleLogin = () => {
+        const user = { id: 1, name: "Paul", email: "paul@example.com" };
+    dispatch(signInSuccess(user));
+
+  };
+  console.log("Logged in user:", loginUser);
 
   return (
     <>
@@ -109,6 +122,7 @@ const Login = () => {
 
               <Pressable
                 style={shadowStyle}
+                onPress={handleLogin}
                 className=" bg-primary flex items-center justify-center rounded-lg mt-4 h-[50px] "
               >
                 <Text className="text-white font-bold text-base  ">

@@ -7,6 +7,8 @@ import {
   TextInput,
   Pressable,
 } from "react-native";
+
+// https://book-store-59ah.onrender.com
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
@@ -32,7 +34,7 @@ const Signup = () => {
       <KeyboardAvoidingView
         behavior="padding"
         keyboardVerticalOffset={Platform.OS === "ios" ? "100" : 0}
-        className="flex-1   "
+        className="flex-1"
       >
         <View className="flex-1 bg-background p-4 items-center justify-center ">
           <View
