@@ -1,15 +1,26 @@
-import { Text, View } from "react-native";
+import { useEffect } from "react";
+import { Redirect } from "expo-router";
+import { useSelector } from "react-redux";
+import { View, ActivityIndicator } from "react-native";
 import "./global.css";
-import { Link } from "expo-router";
 
 export default function Index() {
-  return (
-      <View className="flex-1 justify-center items-center">
-        <Text className="text-3xl text-center text-placeholderText">
-          Edit index.jsx to edit this screen.
-        </Text>
-        <Link href="/(auth)/signup">Go to sign up page</Link>
-        <Link href="/(auth)">Go to login page</Link>
+  const { loginUser } = useSelector((state) => state.auth);
+
+  // Show loading indicator while Redux Persist is rehydrating
+  if (loginUser === undefined) {
+    return (
+      <View className="flex-1 justify-center items-center bg-background">
+        <ActivityIndicator size="large" color="#4CAF50" />
       </View>
-  );
+    );
+  }
+
+  // If user is logged in, redirect to tabs
+  if (loginUser) {
+    return <Redirect href="/(tabs)" />;
+  }
+
+  // If user is not logged in, redirect to auth
+  return <Redirect href="/(auth)" />;
 }

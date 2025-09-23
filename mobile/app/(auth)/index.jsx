@@ -12,7 +12,6 @@ import {
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import Toast from "react-native-root-toast";
 import { signInSuccess } from "../../redux/slice/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
@@ -29,7 +28,6 @@ const Login = () => {
 
   const { loginUser } = useSelector((state) => state.auth);
 
-  console.log(loginUser)
 
   const shadowStyle = {
     shadowColor: "#000",
