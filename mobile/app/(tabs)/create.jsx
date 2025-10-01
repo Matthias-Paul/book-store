@@ -17,7 +17,7 @@ import * as ImageManipulator from "expo-image-manipulator";
 import { useSelector } from "react-redux";
 import ErrorModal from "../../components/ErrorModal";
 import { postBook } from "../../utils/bookApi";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 
 export default function CreateTab() {
@@ -30,6 +30,7 @@ export default function CreateTab() {
 
   const { loginUser } = useSelector((state) => state.auth);
   const router = useRouter();
+  const queryClient = useQueryClient()
 
   const shadowStyle = {
     shadowColor: "#000",
@@ -104,6 +105,7 @@ export default function CreateTab() {
       postBook({ title, token, rating, image, caption }),
     onSuccess: (data) => {
       console.log("Book shared successfully:", data);
+      queryClient.invalidateQueries("books")
       setCaption("");
       setImage("");
       setTitle("");

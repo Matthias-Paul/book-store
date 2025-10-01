@@ -22,3 +22,22 @@ export const postBook = async ({ title, image, rating, caption, token }) => {
 
   return data;
 };
+
+
+export const fetchBooks = async ({ pageParam = 1, token }) =>{
+  const res = await fetch(`${BASE_URL}/api/books?page=${pageParam}`,{
+    method:"GET",
+    headers:{
+      "Content-Type":"application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  const data = await res.json()
+
+  if(!res.ok){
+    throw new Error(data.message ||  "Failed to fetch books")
+  }
+
+  return data
+}
