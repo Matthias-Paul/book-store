@@ -54,7 +54,6 @@ export const uploadImage = async (req, res) => {
 
     const result = await streamUpload(processedBuffer);
 
-    // 3️⃣ Return success response
     return res.status(200).json({
       success: true,
       message: "Image uploaded successfully",

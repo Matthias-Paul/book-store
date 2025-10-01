@@ -68,7 +68,7 @@ const Signup = () => {
       >
         <View className="flex-1 bg-background p-4 items-center justify-center ">
           <View
-            className="bg-cardBackground w-full rounded-lg p-5 border border-border"
+            className="bg-cardBackground w-full rounded-xl p-5 border border-border"
             style={shadowStyle}
           >
             <View className=" mb-4 ">

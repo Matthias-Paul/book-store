@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Redirect } from "expo-router";
 import { useSelector } from "react-redux";
 import { View, ActivityIndicator } from "react-native";
@@ -16,11 +15,9 @@ export default function Index() {
     );
   }
 
-  // If user is logged in, redirect to tabs
   if (loginUser) {
     return <Redirect href="/(tabs)" />;
   }
 
-  // If user is not logged in, redirect to auth
   return <Redirect href="/(auth)" />;
 }

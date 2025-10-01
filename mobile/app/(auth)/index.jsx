@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { signInSuccess } from "../../redux/slice/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
@@ -24,10 +24,10 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const { loginUser } = useSelector((state) => state.auth);
-
 
   const shadowStyle = {
     shadowColor: "#000",
@@ -44,6 +44,7 @@ const Login = () => {
       console.log("Login success:", data);
       setEmail("");
       setPassword("");
+      router.replace("/(tabs)");
     },
     onError: (err) => {
       console.log("Login failed:", err.message);
@@ -76,7 +77,7 @@ const Login = () => {
             />
           </View>
           <View
-            className="bg-cardBackground w-full rounded-lg p-5 border border-border"
+            className="bg-cardBackground w-full rounded-xl p-5 border border-border"
             style={shadowStyle}
           >
             <View className=" mb-4 ">
