@@ -12,7 +12,7 @@ import { fetchBooks } from "../../utils/bookApi";
 import renderItem from "../../components/renderItem";
 
 export default function HomeTab() {
-  const { loginUser } = useSelector((state) => state.auth);
+  const { loginUser } = useSelector((state) => state?.auth);
   const [refreshing, setRefreshing] = useState(false);
 
   const {
@@ -23,7 +23,7 @@ export default function HomeTab() {
     isFetchingNextPage,
     isLoading,
   } = useInfiniteQuery({
-    queryKey: ["books", loginUser.token],
+    queryKey: ["books", loginUser?.token],
     queryFn: ({ pageParam = 1 }) =>
       fetchBooks({ pageParam, token: loginUser?.token }),
     getNextPageParam: (lastPage, pages) => {
@@ -32,7 +32,7 @@ export default function HomeTab() {
     enabled: !!loginUser?.token,
   });
 
-  const books = data?.pages.flatMap((page) => page.books) || [];
+  const books = data?.pages.flatMap((page) => page?.books) || [];
 
   const onRefresh = async () => {
     try {
