@@ -18,6 +18,12 @@ module.exports = {
         white: "#ffffff",
         black: "#000000",
       },
+      fontFamily: {
+        'JetBrainsMono-Regular': ['JetBrainsMono-Regular'],
+        'JetBrainsMono-Medium': ['JetBrainsMono-Medium'],
+        'JetBrainsMono-Bold': ['JetBrainsMono-Bold'],
+        'JetBrainsMono-ExtraBold': ['JetBrainsMono-ExtraBold'],
+      },
     },
   },
   plugins: [],

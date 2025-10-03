@@ -73,7 +73,7 @@ export default function HomeTab() {
         }
         ListHeaderComponent={
           <View className="mt-5 items-center">
-            <Text className="text-3xl text-primary font-bold mb-2">
+              <Text className="text-3xl font-JetBrainsMono-Regular text-primary font-bold mb-2">
               BookRec
             </Text>
             <Text className="text-base text-textSecondary text-center mb-2">
