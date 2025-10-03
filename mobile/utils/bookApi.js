@@ -41,3 +41,40 @@ export const fetchBooks = async ({ pageParam = 1, token }) =>{
 
   return data
 }
+
+
+export const fetchUserBook = async ( token ) =>{
+  const res = await fetch(`${BASE_URL}/api/userBooks`,{
+    method:"GET",
+    headers:{
+      "Content-Type":"application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  const data = await res.json()
+
+  if(!res.ok){
+    throw new Error(data.message ||  "Failed to fetch books")
+  }
+
+  return data
+}
+
+export const deleteBook = async ( token,  bookId ) =>{
+  const res = await fetch(`${BASE_URL}/api/book/${bookId}`,{
+    method:"DELETE",
+    headers:{
+      "Content-Type":"application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  const data = await res.json()
+
+  if(!res.ok){
+    throw new Error(data.message ||  "Failed to delete book")
+  }
+
+  return data
+}

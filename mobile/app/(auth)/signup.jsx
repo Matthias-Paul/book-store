@@ -11,7 +11,7 @@ import {
 
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { fetchSignUpApi } from "../../utils/authApi";
 import { useMutation } from "@tanstack/react-query";
 import ErrorModal from "../../components/ErrorModal";
@@ -25,6 +25,7 @@ const Signup = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const shadowStyle = {
     shadowColor: "#000",
@@ -43,6 +44,7 @@ const Signup = () => {
       setUsername("");
       setEmail("");
       setPassword("");
+      router.replace("/(tabs)");
     },
     onError: (err) => {
       console.log("sign up failed:", err.message);

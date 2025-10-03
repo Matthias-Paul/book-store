@@ -56,7 +56,7 @@ export default function HomeTab() {
         data={books}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
-        contentContainerStyle={{ padding: 16, paddingBottom: 80 }}
+        contentContainerStyle={{ padding: 16, paddingBottom: 20 }}
         showsVerticalScrollIndicator={false}
         onEndReached={() => {
           if (hasNextPage && !isFetchingNextPage) {
@@ -73,7 +73,7 @@ export default function HomeTab() {
         }
         ListHeaderComponent={
           <View className="mt-5 items-center">
-            <Text className="text-2xl text-primary font-bold mb-2">
+            <Text className="text-3xl text-primary font-bold mb-2">
               BookRec
             </Text>
             <Text className="text-base text-textSecondary text-center mb-2">
